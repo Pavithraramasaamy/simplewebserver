@@ -15,52 +15,42 @@ Serving the HTML pages.
 Testing the webserver
 
 ## PROGRAM:
-
 ```
 from http.server import HTTPServer,BaseHTTPRequestHandler
-
-content="""
+content = '''
+<!DOCTYPE html>
 <html>
 <head>
+<titlt>MY WEBSERVER</title>
 </head>
 <body>
-<h1>Top five web application development frameworks.</h1>
-     <ol>
-      <li>React js</li>
-      <li>Django </li>
-      <li>Node js </li>
-      <li>Larvarel </li>
-      <li>Angular JS </li>
-      </ol>
-
+<h1>WELCOME TO MY SIMPLE WEBSERVER</h1>
 </body>
 </html>
-"""
+'''
 
-class HelloHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
+class myserver(BaseHTTPRequestHandler):
+    def do_GET(self): 
         self.send_response(200)
-        self.send_header('content-type','text/html; charset=uft-8')
         self.end_headers()
         self.wfile.write(content.encode())
+print("Get request recieved")
 
-
-server_address=('',80)
-httpd = HTTPServer(server_address, HelloHandler)
+server_address = ('',80)
+httpd = HTTPServer(server_address, myserver)
 httpd.serve_forever()
-
 ```
 
 
 
 ## OUTPUT:
+
+
+![](./webserver.png)
+
+![](./output1.png)
    
-   # Top five web application development frameworks.
-     1. React js
-     2. Django
-     3. Node js
-     4. Larvarel
-     5. Angular JS
+
  
  
  
